@@ -112,7 +112,7 @@ func (rb *Bitmap) FromUnsafeBytes(data []byte) (p int64, err error) {
 	for i := uint64(0); i < size; i++ {
 		keyBuf, err := stream.Next(4)
 		if err != nil {
-			return 0, fmt.Errorf("error in bitmap.UnsafeFromBytes: could not read key #%d: %w", i, err)
+			return 0, fmt.Errorf("error in bitmap.UnsafeFromBytes: could not read key #%d: %w" i, err)
 		}
 		rb.highlowcontainer.keys[i] = binary.LittleEndian.Uint32(keyBuf)
 		rb.highlowcontainer.containers[i] = roaring.NewBitmap()
